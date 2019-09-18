@@ -1,9 +1,18 @@
 class CouponsController < ApplicationController
-def create
-  @coupon = Coupon.new
-  @coupon.title = params[:couon_code]
-  @coupon.description = params[:store]
-  @coupon.save
   
-end
+  def index
+    @coupons = Coupon.all
+  end
+  
+  def new
+    @coupon = Coupon.new
+  end
+  
+  def create
+    @coupon = Coupon.new
+    @coupon.coupon_code = params[:coupon_code]
+    @coupon.store = params[:store]
+    @coupon.save
+    redirect_to coupon_path(@coupon)
+  end
 end
