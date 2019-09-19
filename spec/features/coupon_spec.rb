@@ -19,7 +19,7 @@ end
 describe 'form page' do
   it 'form renders with the new action' do
     visit new_coupon_path
-    expect(page).to have_content("Coupon Form")
+    expect(page).to have_content("coupons Form")
   end
 
   it 'new form submits content and renders form content' do
@@ -28,7 +28,7 @@ describe 'form page' do
     fill_in 'coupon[coupon_code]', with: "YAYFREE"
     fill_in 'coupon[store]', with: "Hobby Lobby"
 
-    click_on "Submit Coupon"
+    click_on "Submit coupons"
 
     expect(page).to have_content("YAYFREE")
   end
@@ -39,7 +39,7 @@ describe 'form page' do
     fill_in 'coupon[coupon_code]', with: "FREEITEM"
     fill_in 'coupon[store]', with: "Quip"
 
-    click_on "Submit Coupon"
+    click_on "Submit coupons"
 
     expect(Coupon.last.store).to eq("Quip")
   end
